@@ -16,14 +16,14 @@ function Photos() {
     formData.append("upload_preset", "praveen");
 
     axios
-      .post("https://api.cloudinary.com/v1_1/di6pzmxin/upload", formData)
+      .post("https://api.cloudinary.com/v1_1/dm6ecjtxm/upload", formData)
       .then((response) => {
         console.log(response);
         url = response.data.url;
         console.log(url);
 
         axios
-          .post("https://praveen-api.herokuapp.com/photos", {
+          .post(`${process.env.NEXT_PUBLIC_API_URL}/photos`, {
             image: url,
             category: category,
           })
